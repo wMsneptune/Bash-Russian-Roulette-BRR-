@@ -1,12 +1,12 @@
 # Bash-Russian-Roulette-BRR-  
 
-@@Created by Neptune, with love@@
+**Created by Neptune, with love**
 
 Not so complex bash script game where you can play the infamous Russian Roulette game!
 
-##I CREATED THIS SCRIPT WITH PURE EDUCATIONAL AND ENTERTAINMENT PURPOSES IN MIND. I CLAIM NO RESPONSIBILITY IF YOU DEAL ANY KIND OF DAMAGE TO YOUR SYSTEM. THE COMMANDS INSIDE THIS SCRIPT ARE DANGEROUS AND SHOULD NOT BE MESSED WITH##
+**I CREATED THIS SCRIPT WITH PURE EDUCATIONAL AND ENTERTAINMENT PURPOSES IN MIND. I CLAIM NO RESPONSIBILITY IF YOU DEAL ANY KIND OF DAMAGE TO YOUR SYSTEM. THE COMMANDS INSIDE THIS SCRIPT ARE DANGEROUS AND SHOULD NOT BE MESSED WITH**
 
-##RUN IN A VIRTUAL MACHINE##
+**RUN IN A VIRTUAL MACHINE**
 
 ![BRR1](https://github.com/user-attachments/assets/caf49e21-53c5-4d2b-a2d5-5f791ab4f929)
 
@@ -97,4 +97,6 @@ The probability of the bullet being on a certain position of the "cylinder" of t
 
 The last part of the program consists firstly of a printf line showing you the options available and the read command. I made this part this way because putting the printf/read command inside the while loop resulted in the repetition of the prompt when the default case was triggered. In other words, if you mistype the keywords, the first message would appear again and again. The options are simple, you can kill the process by typing "KILL" and the SIGKILL signal will be sent using the $PID variable of the start of the script. If you chose to type "SHOOT" however... no explanation needed. 
 
-This was the entire explanation. For more info, you can see the comments I made or ask me whatever you want. Hope you enjoy and win the game in your main PC, my friend!
+## 9) ACKNOWLEDGEMENTS
+
+This was the entire explanation. For more info, you can see the comments I made or ask me whatever you want. Thanks to my friend Sloudy, he motivated me to keep coding this silly game <3. Hope you enjoy and win the game in your main PC, my friend!
