@@ -85,8 +85,11 @@ The selected argument will be stored at the variable $SELECTED. Then, this varia
 ## 6) ERROR CODES
 
 Error code 0 = Success.
+
 Error code 1 = Permission denied.
+
 Error code 2 = Invalid or null parameter provided.
+
 Error code 3 = More than one parameter were provided.
 
 ## 7) SHUFFLE, BULLET AND ROUNDS
