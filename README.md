@@ -34,7 +34,7 @@ The script needs root privileges to run because of the nature of the commands th
 
 0.3.2) 
 
-<$ su>
+> $ su
 
 You will be prompted for root's password. When the correct password is introduced you will become root and now you can run the script without using sudo (don't forget about the argument!).
 
