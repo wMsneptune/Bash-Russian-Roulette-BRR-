@@ -14,27 +14,7 @@ So, the idea of a computer version of the infamous game of the Russian roulette 
 
 This is not a very complex or complicated script, in fact it's one of my first scripts ever!, that's why I'm sorry if something doesn't work perfect on every GNU/Linux distribution. I made it in a way that (as far as I know) it's very compatible with any distro (you don't need to install any package aside from the script itself). 
 
-This was a very fun thing to make, so I can say that I'm very satisfied with the final result. You can make improvements and upgrade the code if you want tho, do whatever you want. Feel free to read it, understand it and change it as you please (but be very cautious about executing it and comment out every line that has some form of command execution).
-
-To play, open a terminal with CTRL+ALT+T or search in your applications' menu/search bar for some form of terminal emulator. Then, navigate to the folder where the script and this file are stored with cd. Execute the next line:
-
-$ chmod +x RUSSIANROULETTE.sh
-
-This will grant the script the permission for executing. Lastly, run it with elevated privileges with the next command and select a number between 1-3, put the number next to the roulette's name separated by a space: 
-
-$ sudo ./RUSSIANROULETTE.sh 1 #OR# sudo ./RUSSIANROULETTE.sh 2 #OR# sudo ./RUSSIANROULETTE.sh 3
-
-These numbers represent an argument that is necessary for selecting the method that the roulette will use when you lose to make the operative system or your disk a mess (SEE ITEM 5). Before executing sudo, make sure you can use it and that you are in the sudoers file in the /etc/ directory. You can also become root to run it, one of the first things the script will do is check if you're the superuser or not. If not, a failsafe will activate and the script will exit with error code 1. For doing this, type in the terminal:
-
-$ su
-Password: <root's password> (your prompt name will change to root when the correct password is introduced)
-$ ./RUSSIANROULETTE.sh <number 1, 2 or 3>
-
-I recommend you reading the script with some CLI or GUI text editor like nano, vim or gedit before doing anything with it, so you can see what it does, but I'll explain some things here about it. Run:
-
-$ nano RUSSIANROULETTE.sh #OR# vim RUSSIANROULETTE.sh #OR# gedit RUSSIANROULETTE.sh 
-
-So, that's it for execution, obviously you can simply copy and paste the commands and don't read anything that I say. So, you can go and have fun (a very weird form of fun I think, but I don't judge you, I like these kinds of things too). Now, let's talk about the roulette itself. 
+Now, let's talk about the roulette itself. 
 
 1) // SHELLTRAP //
 
