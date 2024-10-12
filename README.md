@@ -18,7 +18,7 @@ This was a very fun thing to make, so I can say that I'm very satisfied with the
 
 Now, let's talk about the roulette itself.
 
-0) // COMMANDS //
+##0) // COMMANDS //
 
 0.1) Open a terminal with CTRL+ALT+T or search in your applications' menu/search bar for some form of terminal emulator. Then, navigate to the folder where the script and this file are stored with cd.
 
