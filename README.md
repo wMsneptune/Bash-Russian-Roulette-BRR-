@@ -18,7 +18,7 @@ This was a very fun thing to make, so I can say that I'm very satisfied with the
 
 Now, let's talk about the roulette itself.
 
-##0) // COMMANDS //
+## 0) COMMANDS
 
 0.1) Open a terminal with CTRL+ALT+T or search in your applications' menu/search bar for some form of terminal emulator. Then, navigate to the folder where the script and this file are stored with cd.
 
@@ -38,7 +38,7 @@ $ su
 
 You will be prompted for root's password. When the correct password is introduced you will become root and now you can run the script without using sudo (don't forget about the argument!).
 
-1) // SHELLTRAP //
+## 1) SHELLTRAP
 
 First, we have a shell trap that ignores different signals and keep the script running once executed. The ignored signals are SIGINT (Interrupt | CTRL+C), SIGTSTP (Terminal Stop | CTRL+Z), SIGQUIT (Exit | CTRL+\) & SIGTERM (Terminate | Can only be sent with kill or programmatically). I made this trap in the first place because I must assure that the execution of the script can't be interrupted in any way, so the deletion of important files, the entire file system or the disk is inevitable. The only signal that can't be handled in any way is SIGKILL. This signal can be sent with the kill command or on a GUI process manager. Also, I didn't include the signal SIGHUP (Hangup the process), because I don't see it like a necessary component to add. If one of the execution methods is evaluated, there's nothing to do really, so you can kill the roulette itself by closing the terminal window. For sending the SIGKILL signal to the process, you need to run:
 
@@ -52,19 +52,19 @@ user      801306  0.0  0.0  19028  2688 pts/5    S+   00:28   0:00 grep --color=
 $ sudo kill -9 <PID of the process that starts with /bin/bash>
 $ kill -9 <PID> (if the previous command didn't work, be root to run it with sudo su or su)
 
-2) // FIRST IF STATEMENT: FAILSAFE //
+## 2) FIRST IF STATEMENT: FAILSAFE
 
 Right next to the shell trap, we have the IF statement that checks whether your EUID is equal to 0 (this is the way for checking that you are executing the script with administrative privileges). Root is the superuser in any GNU/Linux system and his EUID or UID it's always equal to 0, users in the system have UIDs different from 0. If the IF statement concludes that your EUID is non-equal to zero, then the script exits with error code 1.
 
-3) // PID //
+## 3) PID
 
 "PID" is the ID of the process (the script). This value is stored in the variable PID (original at best) for later use in the kill switch in the sixth round. I decided to use $$ instead of $BASH_PID because it offers major compatibility with versions of bash older than 4.0. As I said in the comments of the script, don't use it with subshells, you can mess things up, and you are better using $BASH_PID, this way you'll always get the PID of the current process in execution.
 
-4) // DISK VARIABLE //
+## 4) DISK VARIABLE
 
 The variable $DISK executes a command that obtains the name of your physical disk. The command uses the tool df, an integrated core util of the system that shows information about the file system. "tail -n +2" skips the first line of the output of the command and discards it, "awk '{print 1}'" extracts the field which has the partition associated with the / of the file system, and "sed 's/[0-9]*//g'" deletes any number next to the name of the disk. With all of that, you got a consistent command that works no matter what name your disk has. Works with LVM and VMs, didn't test with encrypted machines. The result is stored in the variable, used later in the second execution method.
 
-5) // EXECUTION METHODS //
+## 5) EXECUTION METHODS
 
 I made 3 different commands that will be executed when you lose. You can choose what method the roulette will use by passing the argument I mentioned earlier.
 
@@ -82,18 +82,18 @@ The selected argument will be stored at the variable $SELECTED. Then, this varia
 
 5.3) The final and one of the most creatives, the "file emptier". This command uses find, a very common tool available in every GNU/Linux system, and makes a recursive search from the / directory of every file on the file system (find / -type f). Then, it executes the copy option (-exec cp /dev/null "{}" \;) and overwrites the contents of every single file with the contents of /dev/null (which is empty), essentially emptying all the existing files on the system. There's no need to explain the consequences of the execution of the commands I previously mentioned, so, don't play with fire if you don't want to get burned.
 
-6) // ERROR CODES //
+## 6) ERROR CODES
 
 Error code 0 = Success.
 Error code 1 = Permission denied.
 Error code 2 = Invalid or null parameter provided.
 Error code 3 = More than one parameter were provided.
 
-7) // SHUFFLE, BULLET AND ROUNDS //
+## 7) SHUFFLE, BULLET AND ROUNDS
 
 The probability of the bullet being on a certain position of the "cylinder" of the revolver is given by the command "shuf -i 1-6 -n1", which produces a single random integer between 1-6 representing the bullet and then it's stored in the $BULLET_IN_CHAMBER variable. The game consists of 6 rounds, 6 opportunities where you can shoot the revolver (or kill the script if you achieve to survive until the last round). In each round, IF statements are implemented to see if the randomly generated integer is equal to the number of the round. If this is equal, then you're dead and the script takes the chosen execution method and then runs it in the background, unlinking it from the terminal where you play the game. That process is also "shell trapped", which means that it ignores the previously mentioned signals except SIGKILL, but it's already too late if the command is executed.
 
-8) // FINAL WHILE LOOP AND CASE //
+## 8) FINAL WHILE LOOP AND CASE
 
 The last part of the program consists firstly of a printf line showing you the options available and the read command. I made this part this way because putting the printf/read command inside the while loop resulted in the repetition of the prompt when the default case was triggered. In other words, if you mistype the keywords, the first message would appear again and again. The options are simple, you can kill the process by typing "KILL" and the SIGKILL signal will be sent using the $PID variable of the start of the script. If you chose to type "SHOOT" however... no explanation needed. 
 
