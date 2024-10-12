@@ -14,7 +14,30 @@ So, the idea of a computer version of the infamous game of the Russian roulette 
 
 This is not a very complex or complicated script, in fact it's one of my first scripts ever!, that's why I'm sorry if something doesn't work perfect on every GNU/Linux distribution. I made it in a way that (as far as I know) it's very compatible with any distro (you don't need to install any package aside from the script itself). 
 
-Now, let's talk about the roulette itself. 
+This was a very fun thing to make, so I can say that I'm very satisfied with the final result. You can make improvements and upgrade the code if you want tho, do whatever you want. Feel free to read it, understand it and change it as you please (but be very cautious about executing it and comment out every line that has some form of command execution).
+
+Now, let's talk about the roulette itself.
+
+0) // COMMANDS //
+
+0.1) Open a terminal with CTRL+ALT+T or search in your applications' menu/search bar for some form of terminal emulator. Then, navigate to the folder where the script and this file are stored with cd.
+
+0.2) $ chmod +x RUSSIANROULETTE.sh (grant the script permission for executing.)
+
+0.3.1) 
+
+$ sudo ./RUSSIANROULETTE.sh 1 #OR# 
+$ sudo ./RUSSIANROULETTE.sh 2 #OR#
+$ sudo ./RUSSIANROULETTE.sh 3
+
+The script needs root privileges to run because of the nature of the commands that it contains (and also as a failsafe to prevent normal users damaging the system). Each number represents an argument that is necessary for selecting the method that the roulette will use when you lose to make the operative system or your disk a mess (SEE ITEM 5). Before executing sudo, make sure you can use it and that you are in the sudoers file in the /etc/ directory. You can also execute:
+
+0.3.2) 
+
+$ sudo su #OR#
+$ su
+
+You will be prompted for root's password. When the correct password is introduced you will become root and now you can run the script without using sudo (don't forget about the argument!).
 
 1) // SHELLTRAP //
 
