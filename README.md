@@ -1,4 +1,7 @@
-# Bash-Russian-Roulette-BRR-  //@@Created by Neptune, with love@@//
+# Bash-Russian-Roulette-BRR-  
+
+@@Created by Neptune, with love@@
+
 Not so complex bash script game where you can play the infamous Russian Roulette game!
 
 ##I CREATED THIS SCRIPT WITH PURE EDUCATIONAL AND ENTERTAINMENT PURPOSES IN MIND. I CLAIM NO RESPONSIBILITY IF YOU DEAL ANY KIND OF DAMAGE TO YOUR SYSTEM. THE COMMANDS INSIDE THIS SCRIPT ARE DANGEROUS AND SHOULD NOT BE MESSED WITH##
