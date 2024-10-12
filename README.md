@@ -1,4 +1,4 @@
-# Bash-Russian-Roulette-BRR-  
+# Bash Russian Roulette (BRR)  
 
 **Created by Neptune, with love**
 
