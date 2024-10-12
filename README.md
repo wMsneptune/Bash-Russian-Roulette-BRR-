@@ -2,7 +2,10 @@
 Not so complex bash script game where you can play the infamous Russian Roulette game!
 
 ##I CREATED THIS SCRIPT WITH PURE EDUCATIONAL AND ENTERTAINMENT PURPOSES IN MIND. I CLAIM NO RESPONSIBILITY IF YOU DEAL ANY KIND OF DAMAGE TO YOUR SYSTEM. THE COMMANDS INSIDE THIS SCRIPT ARE DANGEROUS AND SHOULD NOT BE MESSED WITH##
+
 ##RUN IN A VIRTUAL MACHINE##
+
+![BRR1](https://github.com/user-attachments/assets/caf49e21-53c5-4d2b-a2d5-5f791ab4f929)
 
 So, the idea of a computer version of the infamous game of the Russian roulette seemed like a pretty fun and interesting idea to develop and create for me. It's nothing new too, there's a lot of "one-liner roulettes" that consists in picking a random number between two fixed digits and executing "rm -rf --no-preserve-root /" if you're unlucky. The thing is that these roulettes are ok, but they don't even have consistency in mind because you have to execute the script again and again to lose, that's like loading a bullet in the revolver, shoot it, throw it away if you didn't delete your entire OS and repeating the process again and again! The correct way of doing this should be storing this randomly generated number inside a variable and then give the user the option to interact with the script. This way, the probability of losing increases as you get far into the rounds. It's a very simple thing to understand, and I was very bored, so I started making my own version.
 
@@ -90,16 +93,3 @@ The probability of the bullet being on a certain position of the "cylinder" of t
 The last part of the program consists firstly of a printf line showing you the options available and the read command. I made this part this way because putting the printf/read command inside the while loop resulted in the repetition of the prompt when the default case was triggered. In other words, if you mistype the keywords, the first message would appear again and again. The options are simple, you can kill the process by typing "KILL" and the SIGKILL signal will be sent using the $PID variable of the start of the script. If you chose to type "SHOOT" however... no explanation needed. 
 
 This was the entire explanation. For more info, you can see the comments I made or ask me whatever you want. Hope you enjoy and win the game in your main PC, my friend!
-
-
- ███▄    █ ▓█████  ██▓███  ▄▄▄█████▓ █    ██  ███▄    █ ▓█████ 
- ██ ▀█   █ ▓█   ▀ ▓██░  ██▒▓  ██▒ ▓▒ ██  ▓██▒ ██ ▀█   █ ▓█   ▀ 
-▓██  ▀█ ██▒▒███   ▓██░ ██▓▒▒ ▓██░ ▒░▓██  ▒██░▓██  ▀█ ██▒▒███   
-▓██▒  ▐▌██▒▒▓█  ▄ ▒██▄█▓▒ ▒░ ▓██▓ ░ ▓▓█  ░██░▓██▒  ▐▌██▒▒▓█  ▄ 
-▒██░   ▓██░░▒████▒▒██▒ ░  ░  ▒██▒ ░ ▒▒█████▓ ▒██░   ▓██░░▒████▒
-░ ▒░   ▒ ▒ ░░ ▒░ ░▒▓▒░ ░  ░  ▒ ░░   ░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒ ░░ ▒░ ░
-░ ░░   ░ ▒░ ░ ░  ░░▒ ░         ░    ░░▒░ ░ ░ ░ ░░   ░ ▒░ ░ ░  ░
-   ░   ░ ░    ░   ░░         ░       ░░░ ░ ░    ░   ░ ░    ░   
-         ░    ░  ░                     ░              ░    ░  ░
-         
-                                                                        
