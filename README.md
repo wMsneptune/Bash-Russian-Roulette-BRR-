@@ -44,7 +44,7 @@ First, we have a shell trap that ignores different signals and keep the script r
 
 > $ ps aux | grep RUSSIANROULETTE.sh *(get process PID, Example output)*
 
->          <PID>
+           PID
 >root      800591  0.0  0.0  24164  6144 pts/1    S+   00:28   0:00 sudo ./RUSSIANROULETTE.sh 1            
 
 >root      800592  0.0  0.0  24164  2488 pts/4    Ss   00:28   0:00 sudo ./RUSSIANROULETTE.sh 1
