@@ -90,12 +90,15 @@ The selected argument will be stored at the variable $SELECTED. Then, this varia
 
 5.3) The final and one of the most creatives, the "file emptier". This command uses find, a very common tool available in every GNU/Linux system, and makes a recursive search from the / directory of every file on the file system (find / -type f). Then, it executes the copy option (-exec cp /dev/null "{}" \;) and overwrites the contents of every single file with the contents of /dev/null (which is empty), essentially emptying all the existing files on the system. There's no need to explain the consequences of the execution of the commands I previously mentioned, so, don't play with fire if you don't want to get burned.
 
-6) // ERROR CODES //
+6) // ERROR CODES AND SANITIZATION //
 
-Error code 0 = Success.
-Error code 1 = Permission denied.
-Error code 2 = Invalid or null parameter provided.
-Error code 3 = More than one parameter were provided.
+As a recent correction, I re-organized the code and included different IF statements to check, verify and sanitize variables and the argument that needs to be introduced for the program to run. I fixed a flaw where you could put a special character and the program would still run anyway. This was a significant error, because the program couldn't select one of the three execution methods to evaluate. Also, I included quotes to the variables evaluated in the for loop and in the final while loop to mitigate any error that could happen.
+
+There can be 4 error codes. Error code 1 happens when you don't execute the roulette as root (the failsafe). Error code 2 appears when less or more than one argument are introduced in the command line when you are trying to execute the script. Error code 3 triggers when you put a character non-equal to number 1, 2 or 3 (it also triggers when you put special characters). Finally, I made a final IF statement to check whether the $BULLET_IN_CHAMBER variable has a number between 1 and 6 stored. This is a little bit overkill because the shuf command with the options I used will always produce an integer of those specifics, but better be sure y'know. If somehow the variable has a number non-equal to 1-6, error code 4 triggers and execution stops.
+
+If you want to check the exit code after executing the script (or after running any command or program), you can run:
+
+$ echo $?
 
 7) // SHUFFLE, BULLET AND ROUNDS //
 
@@ -107,7 +110,7 @@ The last part of the program consists firstly of a printf line showing you the o
 
 // EXTRA: DECORATIONS //
 
-Firstly, I implemented some colors to make the program more good-looking and original. Managing these colors was something tedious (especially when I wanted to apply them in the read commands), but the final is result is 100% worth it. I think I could have used printf instead of echo with the "-e" flag in everything, but it's not that important. In addition, I included a banner, an animated spinner to simulate the wait time when the script loads the revolver, a while loop in which the script asks you if you're ready to play and an ascii art of Oppenheimer's face when you select to shoot yourself in the last round.  
+Firstly, I implemented some colors to make the program more good-looking and original. Managing these colors was something tedious (especially when I wanted to apply them in the read commands), but the final is result is 100% worth it. I think I could have used printf instead of echo with the -e flag in everything, but it's not that important. In addition, I included a banner, an animated spinner to simulate the wait time when the script loads the revolver, a while loop in which the script asks you if you're ready to play and an ascii art of Oppenheimer's face when you select to shoot yourself in the last round.  
 
 // ACKNOWLEDGEMENTS //
 
