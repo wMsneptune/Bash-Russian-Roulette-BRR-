@@ -20,6 +20,12 @@ This was a very fun thing to make, so I can say that I'm very satisfied with the
 
 Now, let's talk about the execution of the script and the roulette itself.
 
+## INSTALLATION
+
+You can download the contents of this repository as a zip file and unzip it, download every individual file or use git clone (you will need to install the git package in that case). If you have git installed, run:
+
+    git clone https://github.com/wMsneptune/Bash-Russian-Roulette-BRR-.git && cd Bash-Russian-Roulette-BRR-
+
 ## 0) COMMANDS
 
 **0.1)** Open a terminal with CTRL+ALT+T or search in your applications' menu/search bar for some form of terminal emulator. Then, navigate to the folder where the script and this file are stored with cd.
