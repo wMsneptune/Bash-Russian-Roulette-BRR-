@@ -8,7 +8,8 @@ Not so complex bash script game where you can play the infamous Russian Roulette
 
 **RUN IN A VIRTUAL MACHINE**
 
-![Screenshot from 2024-10-12 23-11-46](https://github.com/user-attachments/assets/5ab04dd8-8b79-44a1-8c7c-93973703049c)
+![Screenshot from 2024-10-13 19-12-24](https://github.com/user-attachments/assets/b4b91f7a-f84b-49ea-8ede-d3d988e2605c)
+![Screenshot from 2024-10-13 19-12-34](https://github.com/user-attachments/assets/c44aa73a-962f-465d-a9cd-1b1391160484)
 
 ## Intro
 
