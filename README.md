@@ -22,11 +22,9 @@ Now, let's talk about the execution of the script and the roulette itself.
 
 **0.1)** Open a terminal with CTRL+ALT+T or search in your applications' menu/search bar for some form of terminal emulator. Then, navigate to the folder where the script and this file are stored with cd.
 
-**0.2)** 
-
     cd <folder path>
 
-**0.3.1)** 
+**0.2.1)** 
 
     chmod +x RUSSIANROULETTE.sh
     
@@ -34,7 +32,7 @@ Now, let's talk about the execution of the script and the roulette itself.
     
 The script needs root privileges to run because of the nature of the commands that it contains (and also as a failsafe to prevent normal users damaging the system). Each number represents an argument that is necessary for selecting the method that the roulette will use when you lose to make the operative system or your disk a mess **(SEE ITEM 5)**. Before executing sudo, make sure you can use it and that you are in the sudoers file in the /etc/ directory. You can also execute:
 
-**0.3.2)** 
+**0.2.2)** 
 
     su
 
