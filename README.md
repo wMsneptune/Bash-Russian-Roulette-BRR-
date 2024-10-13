@@ -10,6 +10,8 @@ Not so complex bash script game where you can play the infamous Russian Roulette
 
 ![Screenshot from 2024-10-12 23-11-46](https://github.com/user-attachments/assets/5ab04dd8-8b79-44a1-8c7c-93973703049c)
 
+## Intro
+
 So, the idea of a computer version of the Russian Roulette game seemed like a pretty fun and interesting idea to develop and create for me. It's nothing new too, there's a lot of "one-liner roulettes" that consists in picking a random number between two fixed digits and executing "rm -rf --no-preserve-root /" if you're unlucky. The thing is that these roulettes are ok, but they don't even have consistency in mind because you have to execute the script again and again to lose, that's like loading a bullet in the revolver, shoot it, throw it away if you didn't delete your entire OS and repeating the process again and again! The correct way of doing this should be storing this randomly generated number inside a variable and then give the user the option to interact with the script. This way, the probability of losing increases as you get far into the rounds. It's a very simple thing to understand, and I was very bored, so I started making my own version.
 
 This is not a very complex or complicated script, in fact it's one of my first scripts ever!, that's why I'm sorry if something doesn't work perfect on every GNU/Linux distribution. I made it in a way that (as far as I know) it's very compatible with any distro (you don't need to install any package aside from the script itself). 
