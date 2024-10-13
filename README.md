@@ -109,7 +109,7 @@ The last part of the program consists firstly of a printf line showing you the o
 ![Screenshot from 2024-10-13 13-40-09](https://github.com/user-attachments/assets/695bb24a-aac9-4e5b-8667-3ed4ae19b5f5)
 ![Screenshot from 2024-10-13 13-54-07](https://github.com/user-attachments/assets/83c49f10-3cd8-4a2b-9443-02671ce63ec8)
 
-Firstly, I implemented some colors to make the program more good-looking and original. Managing these colors was something tedious (especially when I wanted to apply them in the read commands), but the final is result is 100% worth it. I think I could have used printf instead of echo with the "-e" in everything, but it's not that important. In addition, I included a banner, an animated spinner to simulate the wait time when the script loads the revolver, a while loop in which the script asks you if you're ready to play and and ascii art of Oppenheimer's face when you select to shoot yourself in the last round. 
+Firstly, I implemented some colors to make the program more good-looking and original. Managing these colors was something tedious (especially when I wanted to apply them in the read commands), but the final is result is 100% worth it. I think I could have used printf instead of echo with the "-e" flag in everything, but it's not that important. In addition, I included a banner, an animated spinner to simulate the wait time when the script loads the revolver, a while loop in which the script asks you if you're ready to play and and ascii art of Oppenheimer's face when you select to shoot yourself in the last round. 
 
 ## ACKNOWLEDGEMENTS
 
