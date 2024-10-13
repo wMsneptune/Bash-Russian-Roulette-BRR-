@@ -51,6 +51,7 @@ First, we have a shell trap that ignores different signals and keeps the script 
 You can also do:    
 
     su
+   
     kill -9 <PID of /bin/bash>
 
 ## 2) FIRST IF STATEMENT: FAILSAFE
