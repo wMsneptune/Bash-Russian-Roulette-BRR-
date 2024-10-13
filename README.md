@@ -62,25 +62,25 @@ You can also do:
 
 ## 2) FIRST IF STATEMENT: FAILSAFE
 
-![Screenshot from 2024-10-12 21-20-31](https://github.com/user-attachments/assets/ced9ea41-9434-4ea5-93d5-27709592c754)
+![Screenshot from 2024-10-13 18-30-44](https://github.com/user-attachments/assets/66437bbc-302f-4214-ba30-ee6684fc6fa5)
 
 Right next to the shell trap, we have the IF statement that checks whether your EUID is equal to 0 (this is the way for checking that you are executing the script with administrative privileges). Root is the superuser in any GNU/Linux system and his EUID or UID it's always equal to 0, users in the system have UIDs different from 0. If the IF statement concludes that your EUID is non-equal to zero, then the script exits with error code 1.
 
 ## 3) PID
 
-![Screenshot from 2024-10-12 21-18-11](https://github.com/user-attachments/assets/6efb1406-3e81-4963-bff3-b60af37ced96)
+![Screenshot from 2024-10-13 18-32-21](https://github.com/user-attachments/assets/a0d9ba4c-7981-4d54-9509-d767f00e525e)
 
 "PID" is the ID of the process (the script). This value is stored in the variable PID (original at best) for later use in the kill switch in the sixth round. I decided to use $$ instead of $BASH_PID because it offers major compatibility with versions of bash older than 4.0. As I said in the comments of the script, don't use it with subshells, you can mess things up, and you are better using $BASH_PID, this way you'll always get the PID of the current process in execution.
 
 ## 4) DISK VARIABLE
 
-![Screenshot from 2024-10-12 21-18-24](https://github.com/user-attachments/assets/19d3b3c2-3db1-453b-8887-ecc30b2f15c6)
+![Screenshot from 2024-10-13 18-33-59](https://github.com/user-attachments/assets/a4747d94-4dd4-4c53-9a94-05d791684d06)
 
 The variable $DISK executes a command that obtains the name of your physical disk. The command uses the tool df, an integrated core util of the system that shows information about the file system. "tail -n +2" skips the first line of the output of the command and discards it, "awk '{print 1}'" extracts the field which has the partition associated with the / of the file system, and "sed 's/[0-9]*//g'" deletes any number next to the name of the disk. With all of that, you got a consistent command that works no matter what name your disk has. Works with LVM and VMs, didn't test with encrypted machines. The result is stored in the variable, used later in the second execution method.
 
 ## 5) EXECUTION METHODS
 
-![Screenshot from 2024-10-12 21-21-52](https://github.com/user-attachments/assets/9985f68d-5c87-43e5-ae1b-b81089b9b1a8)
+![Screenshot from 2024-10-13 18-38-10](https://github.com/user-attachments/assets/8e71a8e1-0203-4a39-ad7a-38e9dea107d2)
 
 I made 3 different commands that will be executed when you lose. You can choose what method the roulette will use by passing the argument I mentioned earlier. The selected argument will be stored at the variable $SELECTED. Then, this variable will be used in a case construct. If the argument equals 1, the newly created $BULLET_TYPE variable will be equal to the first execution method, and so on and so forth. 
 
@@ -90,22 +90,30 @@ I made 3 different commands that will be executed when you lose. You can choose 
 
 **5.3)** The final and one of the most creatives, the "file emptier". This command uses find, a very common tool available in every GNU/Linux system, and makes a recursive search from the / directory of every file on the file system (find / -type f). Then, it executes the copy option (-exec cp /dev/null "{}" \;) and overwrites the contents of every single file with the contents of /dev/null (which is empty), essentially emptying all the existing files on the system. There's no need to explain the consequences of the execution of the commands I previously mentioned, so, don't play with fire if you don't want to get burned.
 
-## 6) ERROR CODES
+## 6) ERROR CODES AND SANITIZATION
 
-![Screenshot from 2024-10-12 22-02-41](https://github.com/user-attachments/assets/05db4cbc-44e9-40e5-ba47-9a65672d9f29)
-![Screenshot from 2024-10-12 22-06-51](https://github.com/user-attachments/assets/355cd0e4-7f80-4953-836b-9fc4506f2901)
+![Screenshot from 2024-10-13 18-52-41](https://github.com/user-attachments/assets/5b0dc770-eecd-4981-bbcc-ac102f6391f4)
+![Screenshot from 2024-10-13 18-53-06](https://github.com/user-attachments/assets/fe16dcdc-c3a0-461c-81bf-332a7bdffc57)
+
+As a recent correction, I re-organized the code and included different IF statements to check, verify and sanitize variables and the argument that needs to be introduced for the program to run. I fixed a flaw where you could put a special character and the program would still run anyway. This was a significant error, because the program couldn't select one of the three execution methods to evaluate. Also, I included quotes to the variables evaluated in the for loop and in the final while loop to mitigate any error that could happen. 
+
+There can be 4 error codes. Error code 1 happens when you don't execute the roulette as root (the failsafe). Error code 2 appears when less or more than one argument are introduced in the command line when you are trying to execute the script. Error code 3 triggers when you put a character non-equal to number 1, 2 or 3 (it also triggers when you put special characters). Finally, I made a final IF statement to check whether the $BULLET_IN_CHAMBER variable has a number between 1 and 6 stored. This is a little bit overkill because the shuf command with the options I used will always produce an integer of those specifics, but better be sure y'know. If somehow the variable has a number non-equal to 1-6, error code 4 triggers and execution stops.
+
+If you want to check the exit code after executing the script (or after running any command or program), you can run:
+
+    echo $?
 
 ## 7) SHUFFLE, BULLET AND ROUNDS
 
-![Screenshot from 2024-10-12 21-23-56](https://github.com/user-attachments/assets/b05ffb24-7f38-49b5-b853-54b85473ff9b)
-![Screenshot from 2024-10-13 13-37-18](https://github.com/user-attachments/assets/a72e3ebd-e307-4c79-b9f6-04da4d4c5f7b)
+![Screenshot from 2024-10-13 18-55-31](https://github.com/user-attachments/assets/cbe5b002-c80b-4658-9b68-39760d3b3243)
+![Screenshot from 2024-10-13 18-55-52](https://github.com/user-attachments/assets/569fefe1-60c3-4432-90f0-dab917072303)
 
 The probability of the bullet being on a certain position of the "cylinder" of the revolver is given by the command "shuf -i 1-6 -n1", which produces a single random integer between 1-6 representing the bullet and then it's stored in the $BULLET_IN_CHAMBER variable. The game consists of 6 rounds, 6 opportunities where you can shoot the revolver (or kill the script if you achieve to survive until the last round). To make the game dynamic, a for loop is implemented to see if the randomly generated integer is equal to the number of the round. If this is equal, then you're dead and the script takes the chosen execution method and then runs it in the background, unlinking it from the terminal where you play the game. That process is also "shell trapped", which means that it ignores the previously mentioned signals except SIGKILL, but it's already too late if the command is executed.
 
 ## 8) FINAL WHILE LOOP AND CASE
 
-![Screenshot from 2024-10-13 14-19-43](https://github.com/user-attachments/assets/fa82a2e6-23b7-4e96-802a-08208261946e)
-![Screenshot from 2024-10-13 14-16-01](https://github.com/user-attachments/assets/2a6c253c-d666-46a1-88c4-54f03d06b60f)
+![Screenshot from 2024-10-13 18-56-15](https://github.com/user-attachments/assets/5f1657c8-c770-4aa5-8740-a11a9ce744e1)
+![Screenshot from 2024-10-13 18-56-33](https://github.com/user-attachments/assets/e10b73db-b97f-4578-8c20-105e3092bac6)
 
 The last part of the program consists firstly of a printf line showing you the options available and the read command. I made this part this way because putting the printf/read command inside the while loop resulted in the repetition of the prompt when the default case was triggered. In other words, if you mistype the keywords, the first message would appear again and again. The options are simple, you can kill the process by typing "KILL" and the SIGKILL signal will be sent using the $PID variable of the start of the script. If you chose to type "SHOOT" however... no explanation needed. 
 
@@ -114,9 +122,9 @@ The last part of the program consists firstly of a printf line showing you the o
 ![Screenshot from 2024-10-13 13-39-38](https://github.com/user-attachments/assets/e2549988-6409-4dc2-9771-a1789c572938)
 ![Screenshot from 2024-10-13 13-54-22](https://github.com/user-attachments/assets/68c49d5b-221d-4a6c-a371-1fc8e4d13281)
 ![Screenshot from 2024-10-13 13-40-09](https://github.com/user-attachments/assets/695bb24a-aac9-4e5b-8667-3ed4ae19b5f5)
-![Screenshot from 2024-10-13 13-54-07](https://github.com/user-attachments/assets/83c49f10-3cd8-4a2b-9443-02671ce63ec8)
+![Screenshot from 2024-10-13 18-58-35](https://github.com/user-attachments/assets/fc8ab2a4-df26-4502-9bd6-52c730cf1df5)
 
-Firstly, I implemented some colors to make the program more good-looking and original. Managing these colors was something tedious (especially when I wanted to apply them in the read commands), but the final is result is 100% worth it. I think I could have used printf instead of echo with the "-e" flag in everything, but it's not that important. In addition, I included a banner, an animated spinner to simulate the wait time when the script loads the revolver, a while loop in which the script asks you if you're ready to play and and ascii art of Oppenheimer's face when you select to shoot yourself in the last round. 
+Firstly, I implemented some colors to make the program more good-looking and original. Managing these colors was something tedious (especially when I wanted to apply them in the read commands), but the final is result is 100% worth it. I think I could have used printf instead of echo with the -e flag in everything, but it's not that important and I wanted to preserve the empty lines for better readabilty. In addition, I included a banner, an animated spinner to simulate the wait time when the script loads the revolver, a while loop in which the script asks you if you're ready to play and and ascii art of Oppenheimer's face when you select to shoot yourself in the last round. 
 
 ## ACKNOWLEDGEMENTS
 
