@@ -24,7 +24,7 @@ Now, let's talk about the roulette itself.
 
 **0.2)** 
 
-    cd <Folder path>
+    cd <folder path>
 
 **0.3.1)** 
 
