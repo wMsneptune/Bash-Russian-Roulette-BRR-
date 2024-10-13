@@ -67,29 +67,25 @@ You can also do:
 
 ## 2) FIRST IF STATEMENT: FAILSAFE
 
+![Screenshot from 2024-10-12 21-17-43](https://github.com/user-attachments/assets/a2a2126c-8cdc-4d37-a1d2-62f17c888af7)
+
 Right next to the shell trap, we have the IF statement that checks whether your EUID is equal to 0 (this is the way for checking that you are executing the script with administrative privileges). Root is the superuser in any GNU/Linux system and his EUID or UID it's always equal to 0, users in the system have UIDs different from 0. If the IF statement concludes that your EUID is non-equal to zero, then the script exits with error code 1.
 
 ## 3) PID
+
+![Screenshot from 2024-10-12 21-18-11](https://github.com/user-attachments/assets/6efb1406-3e81-4963-bff3-b60af37ced96)
 
 "PID" is the ID of the process (the script). This value is stored in the variable PID (original at best) for later use in the kill switch in the sixth round. I decided to use $$ instead of $BASH_PID because it offers major compatibility with versions of bash older than 4.0. As I said in the comments of the script, don't use it with subshells, you can mess things up, and you are better using $BASH_PID, this way you'll always get the PID of the current process in execution.
 
 ## 4) DISK VARIABLE
 
+![Screenshot from 2024-10-12 21-18-24](https://github.com/user-attachments/assets/19d3b3c2-3db1-453b-8887-ecc30b2f15c6)
+
 The variable $DISK executes a command that obtains the name of your physical disk. The command uses the tool df, an integrated core util of the system that shows information about the file system. "tail -n +2" skips the first line of the output of the command and discards it, "awk '{print 1}'" extracts the field which has the partition associated with the / of the file system, and "sed 's/[0-9]*//g'" deletes any number next to the name of the disk. With all of that, you got a consistent command that works no matter what name your disk has. Works with LVM and VMs, didn't test with encrypted machines. The result is stored in the variable, used later in the second execution method.
 
 ## 5) EXECUTION METHODS
 
-I made 3 different commands that will be executed when you lose. You can choose what method the roulette will use by passing the argument I mentioned earlier.
-
-IF:
-
-$SELECTED ($1) = 1 -> METHOD 1 -> BULLET_TYPE="nohup rm -rf --no-preserve-root / > /dev/null 2>&1 &"
-
-$SELECTED ($1) = 2 -> METHOD 2 -> BULLET_TYPE="nohup dd if=/dev/zero of=$DISK > /dev/null 2>&1 &"
-
-$SELECTED ($1) = 3 -> METHOD 3 -> BULLET_TYPE="nohup find / -type f -exec cp /dev/null "{}" \; > /dev/null 2>&1 &"
-
-The selected argument will be stored at the variable $SELECTED. Then, this variable will be used in a case construct. If the argument equals 1, the newly created $BULLET_TYPE variable will be equal to the first execution method, and so on and so forth. 
+I made 3 different commands that will be executed when you lose. You can choose what method the roulette will use by passing the argument I mentioned earlier. The selected argument will be stored at the variable $SELECTED. Then, this variable will be used in a case construct. If the argument equals 1, the newly created $BULLET_TYPE variable will be equal to the first execution method, and so on and so forth. 
 
 5.1) The first and the most classic method is the "rm -rf --no-preserve-root /". The command rm refers to the action of removing files or directories. Since every single thing in GNU/Linux is a file or directory, you can delete everything from existence. The switch -r means "recursive", finds directories, subdirectories and files and deletes them, and the switch -f means "force", which never prompts what files/directories are being removed and ignores errors and warnings. The option --no-preserve-root ignores a failsafe that doesn't let you delete the / directory. The STDOUT and STDERR of this command is then sent to /dev/null (no terminal output is shown), and the process is run in the background thanks to the last "&". "nohup" is a command that lets you manage the SIGHUP signal (for uninterrupted execution even if the terminal closes). You can still (theoretically) interrupt any of the methods I included to the roulette detecting the PID of the newly created process and sending the SIGKILL signal, but damage will be dealt to the system anyway, and you can only do that if you're fast enough (or maybe with a external script).
 
