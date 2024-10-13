@@ -20,17 +20,26 @@ Now, let's talk about the roulette itself.
 
 ## 0) COMMANDS
 
-0.1) Open a terminal with CTRL+ALT+T or search in your applications' menu/search bar for some form of terminal emulator. Then, navigate to the folder where the script and this file are stored with cd.
+**0.1)** Open a terminal with CTRL+ALT+T or search in your applications' menu/search bar for some form of terminal emulator. Then, navigate to the folder where the script and this file are stored with cd.
 
-0.2) 
+**0.2)** 
 
-![Screenshot from 2024-10-12 20-42-24](https://github.com/user-attachments/assets/c9ebdec6-56a3-4215-8ddb-382b49099b15)
+    cd <Folder path>
 
-0.3.1) 
+**0.3.1)** 
 
-![Screenshot from 2024-10-12 20-44-13](https://github.com/user-attachments/assets/59a2fa0d-2705-47d9-bbe1-8403440be6ea)
+    chmod +x RUSSIANROULETTE.sh
+    
+    sudo ./RUSSIANROULETTE.sh 1
 
-The script needs root privileges to run because of the nature of the commands that it contains (and also as a failsafe to prevent normal users damaging the system). Each number represents an argument that is necessary for selecting the method that the roulette will use when you lose to make the operative system or your disk a mess (SEE ITEM 5). Before executing sudo, make sure you can use it and that you are in the sudoers file in the /etc/ directory. You can also execute:
+OR:
+
+    sudo ./RUSSIANROULETTE.sh 2
+OR:
+    
+    sudo ./RUSSIANROULETTE.sh 3
+    
+The script needs root privileges to run because of the nature of the commands that it contains (and also as a failsafe to prevent normal users damaging the system). Each number represents an argument that is necessary for selecting the method that the roulette will use when you lose to make the operative system or your disk a mess **(SEE ITEM 5)**. Before executing sudo, make sure you can use it and that you are in the sudoers file in the /etc/ directory. You can also execute:
 
 0.3.2) 
 
