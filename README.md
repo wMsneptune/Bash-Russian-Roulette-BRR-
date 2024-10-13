@@ -119,6 +119,6 @@ The probability of the bullet being on a certain position of the "cylinder" of t
 
 The last part of the program consists firstly of a printf line showing you the options available and the read command. I made this part this way because putting the printf/read command inside the while loop resulted in the repetition of the prompt when the default case was triggered. In other words, if you mistype the keywords, the first message would appear again and again. The options are simple, you can kill the process by typing "KILL" and the SIGKILL signal will be sent using the $PID variable of the start of the script. If you chose to type "SHOOT" however... no explanation needed. 
 
-## 9) ACKNOWLEDGEMENTS
+## ACKNOWLEDGEMENTS
 
 This was the entire explanation. For more info, you can see the comments I made or ask me whatever you want. Thanks to my friend Sloudy, he motivated me to keep coding this silly game <3. Hope you enjoy and win the game in your main PC, my friend!
