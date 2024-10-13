@@ -30,14 +30,7 @@ Now, let's talk about the roulette itself.
 
     chmod +x RUSSIANROULETTE.sh
     
-    sudo ./RUSSIANROULETTE.sh 1
-
-OR:
-
-    sudo ./RUSSIANROULETTE.sh 2
-OR:
-    
-    sudo ./RUSSIANROULETTE.sh 3
+    sudo ./RUSSIANROULETTE.sh <1, 2 or 3>
     
 The script needs root privileges to run because of the nature of the commands that it contains (and also as a failsafe to prevent normal users damaging the system). Each number represents an argument that is necessary for selecting the method that the roulette will use when you lose to make the operative system or your disk a mess **(SEE ITEM 5)**. Before executing sudo, make sure you can use it and that you are in the sudoers file in the /etc/ directory. You can also execute:
 
@@ -46,6 +39,8 @@ The script needs root privileges to run because of the nature of the commands th
     su
 
 You will be prompted for root's password. When the correct password is introduced you will become root and now you can run the script without using sudo (don't forget about the argument!).
+
+    ./RUSSIANROULETTE <1, 2 or 3>
 
 ## 1) SHELLTRAP
 
