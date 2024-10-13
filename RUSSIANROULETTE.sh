@@ -143,7 +143,7 @@ done
 echo
 printf "${red}You win! You can kill this process to end this (TYPE 'KILL'). Or, you can pull the trigger, only if you're crazy enough (TYPE 'SHOOT'): ${reset}" && read answer2
 
-#While loop for processing the answer you gave earlier. If $answer equals some form of writing KILL, send SIGKILL
+#While loop for processing the answer you gave earlier. If $answer2 equals some form of writing KILL, send SIGKILL
 #to $PID and end the game. If you're nuts you can shoot too, in this case if the variable $answer equals SHOOT or
 #some form of the word, evaluate the selected $BULLET_TYPE and destroy everything. If you mistype, loop the 
 #the command read until you get it right.
