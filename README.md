@@ -34,7 +34,7 @@ The script needs root privileges to run because of the nature of the commands th
 
 0.3.2) 
 
-    $ su
+    su
 
 You will be prompted for root's password. When the correct password is introduced you will become root and now you can run the script without using sudo (don't forget about the argument!).
 
@@ -42,7 +42,7 @@ You will be prompted for root's password. When the correct password is introduce
 
 First, we have a shell trap that ignores different signals and keep the script running once executed. The ignored signals are SIGINT (Interrupt | CTRL+C), SIGTSTP (Terminal Stop | CTRL+Z), SIGQUIT (Exit | CTRL+\) & SIGTERM (Terminate | Can only be sent with kill or programmatically). I made this trap in the first place because I must assure that the execution of the script can't be interrupted in any way, so the deletion of important files, the entire file system or the disk is inevitable. The only signal that can't be handled in any way is SIGKILL. This signal can be sent with the kill command or on a GUI process manager. Also, I didn't include the signal SIGHUP (Hangup the process), because I don't see it like a necessary component to add. If one of the execution methods is evaluated, there's nothing to do really, so you can kill the roulette itself by closing the terminal window. For sending the SIGKILL signal to the process, you need to run:
 
-> $ ps aux | grep RUSSIANROULETTE.sh *(get process PID, Example output)*
+    ps aux | grep RUSSIANROULETTE.sh *(get process PID, Example output)*
 
 >root      800591  0.0  0.0  24164  6144 pts/1    S+   00:28   0:00 sudo ./RUSSIANROULETTE.sh 1            
 
@@ -52,9 +52,9 @@ First, we have a shell trap that ignores different signals and keep the script r
 
 >user      801306  0.0  0.0  19028  2688 pts/5    S+   00:28   0:00 grep --color=auto RUSSIANROULETTE.sh
 
-> $ sudo kill -9 *(PID [second row] of the process that starts with /bin/bash)*
+    sudo kill -9 *(PID [second row] of the process that starts with /bin/bash)*
 
-> $ kill -9 <PID> *(if the previous command didn't work, be root to run it with sudo su or su)*
+    kill -9 <PID> *(if the previous command didn't work, be root to run it with sudo su or su)*
 
 ## 2) FIRST IF STATEMENT: FAILSAFE
 
