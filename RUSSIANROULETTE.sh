@@ -38,7 +38,7 @@ DISK=$(df / | tail -n +2 | awk '{print $1}' | sed 's/[0-9]*//g')
 
 SELECTED=$1
 
-#If 2 or more arguments are passed, exit with error code 2.
+#If 2, more than 2 or no arguments are passed, exit with error code 2.
 
 if [ "$#" -ne 1 ]; then
       echo
