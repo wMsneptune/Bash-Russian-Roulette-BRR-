@@ -97,19 +97,22 @@ I made 3 different commands that will be executed when you lose. You can choose 
 
 ## 6) ERROR CODES
 
-Error code 0 = Success.
-
-Error code 1 = Permission denied.
-
-Error code 2 = Invalid or null parameter provided.
-
-Error code 3 = More than one parameter were provided.
+>Error code 0 = Success.
+>Error code 1 = Permission denied.
+>Error code 2 = Invalid or null parameter provided.
+>Error code 3 = More than one parameter were provided.
 
 ## 7) SHUFFLE, BULLET AND ROUNDS
+
+![Screenshot from 2024-10-12 21-23-56](https://github.com/user-attachments/assets/b05ffb24-7f38-49b5-b853-54b85473ff9b)
+
+![Screenshot from 2024-10-12 21-24-24](https://github.com/user-attachments/assets/a785aad8-2079-49ec-886d-cce2bd504231)
 
 The probability of the bullet being on a certain position of the "cylinder" of the revolver is given by the command "shuf -i 1-6 -n1", which produces a single random integer between 1-6 representing the bullet and then it's stored in the $BULLET_IN_CHAMBER variable. The game consists of 6 rounds, 6 opportunities where you can shoot the revolver (or kill the script if you achieve to survive until the last round). In each round, IF statements are implemented to see if the randomly generated integer is equal to the number of the round. If this is equal, then you're dead and the script takes the chosen execution method and then runs it in the background, unlinking it from the terminal where you play the game. That process is also "shell trapped", which means that it ignores the previously mentioned signals except SIGKILL, but it's already too late if the command is executed.
 
 ## 8) FINAL WHILE LOOP AND CASE
+
+![Screenshot from 2024-10-12 21-27-33](https://github.com/user-attachments/assets/44519c29-e86f-4bcc-bc10-20af8d94d13a)
 
 The last part of the program consists firstly of a printf line showing you the options available and the read command. I made this part this way because putting the printf/read command inside the while loop resulted in the repetition of the prompt when the default case was triggered. In other words, if you mistype the keywords, the first message would appear again and again. The options are simple, you can kill the process by typing "KILL" and the SIGKILL signal will be sent using the $PID variable of the start of the script. If you chose to type "SHOOT" however... no explanation needed. 
 
