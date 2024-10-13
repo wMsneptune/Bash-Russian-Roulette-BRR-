@@ -40,9 +40,11 @@ The script needs root privileges to run because of the nature of the commands th
 
 You will be prompted for root's password. When the correct password is introduced you will become root and now you can run the script without using sudo (don't forget about the argument!).
 
-    ./RUSSIANROULETTE <1, 2 or 3>
+    ./RUSSIANROULETTE.sh <1, 2 or 3>
 
 ## 1) SHELLTRAP
+
+![Screenshot from 2024-10-12 21-16-41](https://github.com/user-attachments/assets/84b13071-2799-410d-ab87-797da46dd2b6)
 
 First, we have a shell trap that ignores different signals and keep the script running once executed. The ignored signals are SIGINT (Interrupt | CTRL+C), SIGTSTP (Terminal Stop | CTRL+Z), SIGQUIT (Exit | CTRL+\) & SIGTERM (Terminate | Can only be sent with kill or programmatically). I made this trap in the first place because I must assure that the execution of the script can't be interrupted in any way, so the deletion of important files, the entire file system or the disk is inevitable. The only signal that can't be handled in any way is SIGKILL. This signal can be sent with the kill command or on a GUI process manager. Also, I didn't include the signal SIGHUP (Hangup the process), because I don't see it like a necessary component to add. If one of the execution methods is evaluated, there's nothing to do really, so you can kill the roulette itself by closing the terminal window. For sending the SIGKILL signal to the process, you need to run:
 
