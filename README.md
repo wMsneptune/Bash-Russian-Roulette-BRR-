@@ -102,3 +102,5 @@ The last part of the program consists firstly of a printf line showing you the o
 ## ACKNOWLEDGEMENTS
 
 This was the entire explanation. For more info, you can see the comments I made or ask me whatever you want. Thanks to my friend Sloudy, he motivated me to keep coding this silly game <3. Hope you enjoy and win the game in your main PC, my friend!
+
+![F3GWSkFboAAho4O](https://github.com/user-attachments/assets/2f9a48e7-cacf-4e2f-ba00-2638bbaf2ce7)
