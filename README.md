@@ -98,7 +98,8 @@ The probability of the bullet being on a certain position of the "cylinder" of t
 
 ## 8) FINAL WHILE LOOP AND CASE
 
-![Screenshot from 2024-10-12 21-27-33](https://github.com/user-attachments/assets/44519c29-e86f-4bcc-bc10-20af8d94d13a)
+![Screenshot from 2024-10-13 14-15-40](https://github.com/user-attachments/assets/e3775e89-7b87-41ad-ab75-45bf1e679628)
+![Screenshot from 2024-10-13 14-16-01](https://github.com/user-attachments/assets/2a6c253c-d666-46a1-88c4-54f03d06b60f)
 
 The last part of the program consists firstly of a printf line showing you the options available and the read command. I made this part this way because putting the printf/read command inside the while loop resulted in the repetition of the prompt when the default case was triggered. In other words, if you mistype the keywords, the first message would appear again and again. The options are simple, you can kill the process by typing "KILL" and the SIGKILL signal will be sent using the $PID variable of the start of the script. If you chose to type "SHOOT" however... no explanation needed. 
 
