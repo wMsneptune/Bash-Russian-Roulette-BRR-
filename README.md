@@ -67,7 +67,7 @@ You can also do:
 
 ## 2) FIRST IF STATEMENT: FAILSAFE
 
-![Screenshot from 2024-10-12 21-17-43](https://github.com/user-attachments/assets/a2a2126c-8cdc-4d37-a1d2-62f17c888af7)
+![Screenshot from 2024-10-12 21-20-31](https://github.com/user-attachments/assets/ced9ea41-9434-4ea5-93d5-27709592c754)
 
 Right next to the shell trap, we have the IF statement that checks whether your EUID is equal to 0 (this is the way for checking that you are executing the script with administrative privileges). Root is the superuser in any GNU/Linux system and his EUID or UID it's always equal to 0, users in the system have UIDs different from 0. If the IF statement concludes that your EUID is non-equal to zero, then the script exits with error code 1.
 
@@ -84,6 +84,8 @@ Right next to the shell trap, we have the IF statement that checks whether your 
 The variable $DISK executes a command that obtains the name of your physical disk. The command uses the tool df, an integrated core util of the system that shows information about the file system. "tail -n +2" skips the first line of the output of the command and discards it, "awk '{print 1}'" extracts the field which has the partition associated with the / of the file system, and "sed 's/[0-9]*//g'" deletes any number next to the name of the disk. With all of that, you got a consistent command that works no matter what name your disk has. Works with LVM and VMs, didn't test with encrypted machines. The result is stored in the variable, used later in the second execution method.
 
 ## 5) EXECUTION METHODS
+
+![Screenshot from 2024-10-12 21-21-52](https://github.com/user-attachments/assets/9985f68d-5c87-43e5-ae1b-b81089b9b1a8)
 
 I made 3 different commands that will be executed when you lose. You can choose what method the roulette will use by passing the argument I mentioned earlier. The selected argument will be stored at the variable $SELECTED. Then, this variable will be used in a case construct. If the argument equals 1, the newly created $BULLET_TYPE variable will be equal to the first execution method, and so on and so forth. 
 
