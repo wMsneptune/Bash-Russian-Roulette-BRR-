@@ -97,13 +97,8 @@ I made 3 different commands that will be executed when you lose. You can choose 
 
 ## 6) ERROR CODES
 
->Error code 0 = Success.
->
->Error code 1 = Permission denied.
->
->Error code 2 = Invalid or null parameter provided.
->
->Error code 3 = More than one parameter were provided.
+![Screenshot from 2024-10-12 22-02-41](https://github.com/user-attachments/assets/05db4cbc-44e9-40e5-ba47-9a65672d9f29)
+![Screenshot from 2024-10-12 22-06-51](https://github.com/user-attachments/assets/355cd0e4-7f80-4953-836b-9fc4506f2901)
 
 ## 7) SHUFFLE, BULLET AND ROUNDS
 
