@@ -102,8 +102,10 @@ BULLET_IN_CHAMBER=$(shuf -i 1-6 -n1)
 #integer between 1 and 6, exit with error code 4.
 
 if ! [[ "$BULLET_IN_CHAMBER" =~ ^[1-6]$ ]]; then
-        echo -e "${yellow}ERROR (4): BULLET_IN_CHAMBER should be a number between 1 and 6.${reset}"
-        exit 4
+        echo
+	echo -e "${yellow}ERROR (4): BULLET_IN_CHAMBER should be a number between 1 and 6.${reset}"
+        echo
+	exit 4
 fi
 
 #Nice good old spinner for simulating wait time.
