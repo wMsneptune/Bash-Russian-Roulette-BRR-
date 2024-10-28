@@ -21,7 +21,7 @@ if [ "$EUID" -ne 0 ]; then
      exit 1
 fi
 
-#Get PID of process for SIGKILL if selected in the last round. 
+#Get the PID of this script for SIGKILL if selected in the last round. 
 
 PID=$$
 
