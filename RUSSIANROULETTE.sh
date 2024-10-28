@@ -4,8 +4,7 @@
 
 trap "" INT TSTP QUIT SIGTERM
 
-#Colors. I put resets on every echo, read and printf lines to make your prompt white and distinct from the
-#messages of the script. It also avoids colorizing your prompt if you kill the program mid-execution.
+#Colors.
 
 white="\e[37m"
 red="\e[31m"
@@ -22,15 +21,11 @@ if [ "$EUID" -ne 0 ]; then
      exit 1
 fi
 
-#Get PID of process for SIGKILL if selected in the last round. I decided to use $$ instead of $BASH_PID because 
-#it has better compatibility with older versions of BASH, but it's a little bit buggy if you work with subshells, 
-#better use $BASH_PID instead in those cases.
+#Get PID of process for SIGKILL if selected in the last round. 
 
 PID=$$
 
-#Get the route of the physical disk that is being used by the system for $BULLET_TYPE when $1 equals 2. Works with
-#VMs and systems that use LVM as far as I tested. In LVM systems, the result of the execution of the dd command 
-#results in a unknown filesystem error at boot.
+#Get the route of the physical disk that is being used by the system for $BULLET_TYPE when $1 equals 2. 
 
 DISK=$(df / | tail -n +2 | awk '{print $1}' | sed 's/[0-9]*//g')
 
@@ -57,9 +52,7 @@ if [[ "$SELECTED" != "1" && "$SELECTED" != "2" && "$SELECTED" != "3" ]]; then
 fi
 
 #Execution methods that will be later evaluated and executed in the background. More explanation in README.md/
-#offlineREAD.me file. Second execution method is kind of special, its execution time depends on the write
-#speed of your disk. If you have a slow HHD, don't even bother. If you have an SSD or SSD-NVMe, you can have fun 
-#with it. Case the variable and establish the methods for the destruction of the system.
+#offlineREAD.me file. 
 
 case $SELECTED in
 	1) BULLET_TYPE="nohup rm -rf --no-preserve-root / > /dev/null 2>&1 &";;     
@@ -136,10 +129,7 @@ while true; do
 done
 
 #Loop integers between 1 and 5 to find if $BULLET_IN_CHAMBER equals one of those numbers. In case it is, 
-#then evaluate one of the $BULLET_TYPE variables declared earlier. As you already saw, the argument you
-#write after the name of the script separated by a space defines the bullet that will be used. If you
-#survive, you are forced to keep playing, or you can kill the script manually (if you want to play 
-#this kind of games, why would you not want to take your luck to the limit?).
+#then evaluate one of the $BULLET_TYPE variables declared earlier, if not, continue the game.
                                 
 for i in {1..5}; do                          
     if [ $i -eq $BULLET_IN_CHAMBER ]; then
@@ -155,16 +145,15 @@ for i in {1..5}; do
     fi
 done        						       
 
-#Obviously, you know that if you pull the trigger here you will die, so this is the option that gives you the 
-#chance to quit the game. Read your input and store it in $answer2 with read.
+#Last round. The script asks if you want to stop the game or destroy your system. The answer is stored in $answer2 
+#for later use.
 
 echo
 printf "${red}You win! You can kill this process to end this (TYPE 'KILL'). Or, you can pull the trigger, only if you're crazy enough (TYPE 'SHOOT'): ${reset}" && read answer2
 
 #While loop for processing the answer you gave earlier. If $answer2 equals some form of writing KILL, send SIGKILL
-#to $PID and end the game. If you're nuts you can shoot too, in this case if the variable $answer2 equals SHOOT or
-#some form of the word, evaluate the selected $BULLET_TYPE and destroy everything. If you mistype, loop the 
-#the command read until you get it right.
+#to $PID and end the game. If the variable $answer2 equals SHOOT or some form of the word, evaluate the selected 
+#$BULLET_TYPE and destroy everything. Loop if you mystype.
 
 while true; do
      case $answer2 in
